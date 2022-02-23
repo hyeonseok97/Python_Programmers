@@ -1,0 +1,13 @@
+def solution(n, lost, reserve):
+    set_reserve = set(reserve)-set(lost) # 여분의 학생과 도난당한 학생의 중복되는 것을 제외하기 위해 집합 자료형 사용
+    set_lost = set(lost)-set(reserve)
+
+
+    for i in set_reserve: # 여분의 학생리스트의 값을 하나씩 검사
+        if i-1 in set_lost:
+            set_lost.remove(i-1)
+        elif i+1 in set_lost:
+            set_lost.remove(i+1)
+    
+    answer = n-len(set_lost) # 전체 학생에서 도난당한 학생의 수를 
+    return answer
