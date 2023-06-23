@@ -1,0 +1,18 @@
+def solution(n, m, section):
+    
+    # 색칠할 구역 0으로 초기화
+    visited = [1] * (n+1)
+    for i in range(len(section)):
+        visited[section[i]] = 0
+        
+    count = 0
+    
+    # 전체 구역 만큼 반복(1~n+1)
+    for i in range(1, n+1):
+        # 순차적으로 색칠해야할 구역이라면 m만큼 색칠을 한다.
+        if visited[i] == 0:
+            count += 1
+            for j in range(m):
+                if i+j <= n:
+                    visited[i+j] = 1
+    return count
