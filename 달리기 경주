@@ -1,0 +1,17 @@
+def solution(players, callings):
+        
+    player = {p:x for x,p in enumerate(players)}
+    rank = {x:p for x,p in enumerate(players)}
+    
+    for data in callings: # 현재 사람
+        now = player[data] # 현재 등수
+        target = now -1 # 앞 등수
+        target_player = rank[target] # 앞 등수 사람
+        
+        rank[now] = target_player
+        rank[target] = data
+        
+        player[target_player] = now
+        player[data] = target
+    
+    return list(rank.values())
