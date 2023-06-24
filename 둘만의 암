@@ -1,0 +1,19 @@
+def solution(s, skip, index):
+    
+    answer = []
+    
+    alph = 'abcdefghijklmnopqrstuvwxyz'
+    
+    for i in list(skip):
+        alph = alph.replace(i,"")
+    
+    for i in list(s):
+        answer.append(alph[(alph.find(i) + index) % len(alph)])
+        
+# 문자열 s 길이만큼 반복을 한다.
+# 각 문자다 아스키코드로 변환한 숫자값에 5를 더해준다. 
+# z보다 커지면 다시 a로 초기화
+# (단, 최초 문자와 5를 더해준 값 사이에 있는 skip 문자 수 만큼 추가로 더해준다.)
+# 최종 단어를 정답 리스트에 삽입해준다
+
+    return ''.join(answer)
