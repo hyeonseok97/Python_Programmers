@@ -1,0 +1,17 @@
+def solution(s):
+    
+    answer = []
+    
+    for i in range(len(s)):
+        target = s[i]
+        data = s[:i]
+        if target in list(data):
+            data1 = list(data)
+            data1.reverse()
+            data2 = ''.join(data1)
+            pos = data2.find(target) + 1
+            answer.append(pos)
+        else:
+            answer.append(-1)
+    
+    return answer
